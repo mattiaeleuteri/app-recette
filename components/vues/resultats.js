@@ -160,17 +160,13 @@ const RECETTES = [
   },
 ];
 
-export default function Resultats({ navigation }) {
+export default function Resultats(props) {
   return (
     <View style={styles.container}>
       <FlatList
         data={RECETTES}
         renderItem={({ item }) => (
-          <Recette
-            title={item.title}
-            image={item.image}
-            navigation={navigation}
-          ></Recette>
+          <Recette recette={item} navigation={props.navigation}></Recette>
         )}
         keyExtractor={(item) => item.id}
       />

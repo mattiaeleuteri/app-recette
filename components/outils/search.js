@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { StyleSheet, View, TextInput} from "react-native";
+import { StyleSheet, View, TextInput } from "react-native";
 import Autocomplete from "react-native-autocomplete-input";
 
 export default function Search() {
@@ -91,7 +91,7 @@ export default function Search() {
         containerStyle={styles.autocompleteContainer}
         defaultValue={query}
         data={ingredients}
-        onChangeText={text => setQuery(text)}
+        onChangeText={(text) => setQuery(text)}
         placeholder="Ingredients"
       />
     </View>

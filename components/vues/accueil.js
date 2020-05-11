@@ -3,12 +3,13 @@ import { View, Button, Text, StyleSheet } from "react-native";
 import Search from "../outils/search";
 import { createStackNavigator } from "@react-navigation/stack";
 import { Ionicons } from "@expo/vector-icons";
+import { TextInput } from "react-native-gesture-handler";
 
 export default function Accueil({ navigation }) {
   return (
     <View style={styles.container}>
       <Text style={styles.textLogo}>LOGO</Text>
-      <Search></Search>
+      <TextInput></TextInput>
       <Ionicons.Button
         name="ios-search"
         onPress={() => navigation.navigate("Search")}

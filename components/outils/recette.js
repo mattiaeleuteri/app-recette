@@ -10,15 +10,17 @@ export default function Recette(props) {
   return (
     <TouchableOpacity
       style={styles.container}
-      onPress={() => props.navigation.navigate("Recipe")}
+      onPress={() =>
+        props.navigation.navigate("Recipe", { recette: props.recette })
+      }
     >
       <Image
         style={styles.image}
         source={{
-          uri: props.image,
+          uri: props.recette.image,
         }}
       />
-      <Title title={props.title} style={styles.title}></Title>
+      <Title title={props.recette.title} style={styles.title}></Title>
     </TouchableOpacity>
   );
 }
