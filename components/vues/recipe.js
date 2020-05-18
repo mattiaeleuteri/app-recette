@@ -1,9 +1,9 @@
-import React, { useState } from "react";
-import { StyleSheet, View, FlatList, Text } from "react-native";
-import { createStackNavigator } from "@react-navigation/stack";
+import React, { useState, useEffect } from "react";
+import { Text } from "react-native";
 
 export default function Recette(props) {
   const { recette } = props.route.params;
+  const url = "https://api.spoonacular.com/recipes/" + recette.id + "/information?apiKey=7633bbc3ec684167b9f04f0a51610a8b";
   const RECIPE = {
     vegetarian: true,
     vegan: false,
@@ -171,12 +171,15 @@ export default function Recette(props) {
     spoonacularSourceUrl:
       "https://spoonacular.com/apple-or-peach-strudel-73420",
   };
-  let test;
-  fetch(
-    "https://api.spoonacular.com/recipes/" +
-      recette.id +
-      "/information?apiKey=7633bbc3ec684167b9f04f0a51610a8b"
-  ).then(res => res.json())
-  .then(data => test = data);
-  return <Text>{test.title}</Text>;
+  /*
+  const [result, setResult] = useState({});
+  useEffect(() => {
+      fetch(url)
+      .then(res => res.json())
+      .then(res => setResult(res));
+  }, [result])
+  */
+ 
+  if(!result) return null;
+  return <Text>{result.title}</Text>;
 }

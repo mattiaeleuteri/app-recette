@@ -1,6 +1,5 @@
-import React, { useState } from "react";
-import { StyleSheet, View, Text, Image, TouchableOpacity } from "react-native";
-import { createStackNavigator } from "@react-navigation/stack";
+import React from "react";
+import { StyleSheet, Text, Image, TouchableOpacity } from "react-native";
 
 export default function Recette(props) {
   function Title(props) {

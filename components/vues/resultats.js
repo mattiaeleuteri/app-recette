@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { StyleSheet, View, FlatList } from "react-native";
+import { StyleSheet, View, FlatList, Text } from "react-native";
 import Recette from "../outils/recette";
 
 const RECETTES = [
@@ -161,6 +161,9 @@ const RECETTES = [
 ];
 
 export default function Resultats(props) {
+  const { ingredients } = props.route.params;
+  console.log(ingredients);
+  
   return (
     <View style={styles.container}>
       <FlatList
@@ -168,7 +171,7 @@ export default function Resultats(props) {
         renderItem={({ item }) => (
           <Recette recette={item} navigation={props.navigation}></Recette>
         )}
-        keyExtractor={(item) => item.id}
+        keyExtractor={(item) => item.id.toString()}
       />
     </View>
   );

@@ -1,40 +1,76 @@
-import React from "react";
-import { View, Button, Text, StyleSheet } from "react-native";
-import Search from "../outils/search";
-import { createStackNavigator } from "@react-navigation/stack";
+import React, { useState } from "react";
+import {
+  View,
+  StyleSheet,
+  Image,
+  TextInput,
+  Keyboard,
+  TouchableWithoutFeedback,
+  Text,
+} from "react-native";
 import { Ionicons } from "@expo/vector-icons";
-import { TextInput } from "react-native-gesture-handler";
+
+const DismissKeyboard = ({ children }) => (
+  <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
+    {children}
+  </TouchableWithoutFeedback>
+);
 
 export default function Accueil({ navigation }) {
+  const [ingredients, setIngredients] = useState([])
   return (
-    <View style={styles.container}>
-      <Text style={styles.textLogo}>LOGO</Text>
-      <TextInput></TextInput>
-      <Ionicons.Button
-        name="ios-search"
-        onPress={() => navigation.navigate("Search")}
-        backgroundColor="green"
-        style={styles.searchButton}
-      >
-        Search
-      </Ionicons.Button>
-    </View>
+    <DismissKeyboard>
+      <View style={styles.container}>
+        <Image
+          source={require("../../assets/logo.png")}
+          style={styles.imageLogo}
+        />
+        <TextInput
+          placeholder="Ingrédients..."
+          onChangeText={(text) => setIngredients(text.trim().split(" "))}
+          style={styles.searchInput}
+        />
+        <Ionicons.Button
+          name="ios-search"
+          onPress={() => navigation.navigate("Search", { ingredients : ingredients })}
+          backgroundColor="green"
+          size={30}
+          borderRadius={10}
+          style={styles.searchButton}
+        >
+          Search
+        </Ionicons.Button>
+      </View>
+    </DismissKeyboard>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
+    flexDirection: "column",
+    justifyContent: "flex-start",
     alignItems: "center",
+    margin: 0,
   },
-  textLogo: {
-    marginBottom: 50,
-    fontSize: 60,
+  imageLogo: {
+    width: 300,
+    height: 300,
   },
   searchButton: {
-    paddingTop: 5,
-    minWidth: 120,
+    width: 250,
+    height: 60,
     justifyContent: "center",
+  },
+  searchInput: {
+    backgroundColor: "white",
+    marginBottom: 20,
+    padding: 10,
+    fontSize: 20,
+    borderWidth: 1,
+    borderColor: "lightgrey",
+    borderRadius: 5,
+    height: 50,
+    width: 300,
   },
 });
