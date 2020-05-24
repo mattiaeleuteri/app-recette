@@ -83,12 +83,12 @@ export default function Search() {
   const [query, setQuery] = useState("");
   const [suggestions, setSuggestions] = useState([]);
 
-  function findIng(query){
-    if (query === '') {
+  function findIng(query) {
+    if (query === "") {
       return [];
     }
-    const regex = new RegExp(`${query.trim()}`, 'i');
-    return ingredients.filter(ing => ing.name.search(regex) >= 0);
+    const regex = new RegExp(`${query.trim()}`, "i");
+    return ingredients.filter((ing) => ing.name.search(regex) >= 0);
   }
 
   return (
@@ -99,7 +99,7 @@ export default function Search() {
         containerStyle={styles.autocompleteContainer}
         defaultValue={query}
         data={ingredients}
-        onChangeText={text => setQuery(text)}
+        onChangeText={(text) => setQuery(text)}
         placeholder="Ingredients"
       />
     </View>

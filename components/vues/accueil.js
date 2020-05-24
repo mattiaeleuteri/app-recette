@@ -6,7 +6,6 @@ import {
   TextInput,
   Keyboard,
   TouchableWithoutFeedback,
-  Text,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 
@@ -17,7 +16,7 @@ const DismissKeyboard = ({ children }) => (
 );
 
 export default function Accueil({ navigation }) {
-  const [ingredients, setIngredients] = useState([])
+  const [ingredients, setIngredients] = useState([]);
   return (
     <DismissKeyboard>
       <View style={styles.container}>
@@ -32,7 +31,9 @@ export default function Accueil({ navigation }) {
         />
         <Ionicons.Button
           name="ios-search"
-          onPress={() => navigation.navigate("Search", { ingredients : ingredients })}
+          onPress={() =>
+            navigation.navigate("Search", { ingredients: ingredients })
+          }
           backgroundColor="green"
           size={30}
           borderRadius={10}
