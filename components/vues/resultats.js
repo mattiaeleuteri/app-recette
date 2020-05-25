@@ -36,7 +36,7 @@ export default function Resultats(props) {
       <FlatList
         data={RECIPE}
         renderItem={({ item }) => (
-          <Recette recette={item} navigation={props.navigation}></Recette>
+          <Recette recette={item} navigation={props.navigation} />
         )}
         keyExtractor={(item) => item.id.toString()}
       />
@@ -47,6 +47,6 @@ export default function Resultats(props) {
 const styles = StyleSheet.create({
   container: {
     margin: 0,
-    padding: 0,
+    padding: 5,
   },
 });

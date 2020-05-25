@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { StyleSheet, View } from "react-native";
 import Autocomplete from "react-native-autocomplete-input";
 
+// Ancien module d'autocomplétion annulé.
+
 export default function Search() {
   const ingredients = [
     {

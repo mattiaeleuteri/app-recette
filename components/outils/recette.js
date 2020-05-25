@@ -33,11 +33,12 @@ const styles = StyleSheet.create({
     padding: 20,
     margin: 5,
     borderRadius: 15,
-    fontSize: 25,
   },
   image: {
     width: 50,
     height: 50,
   },
-  title: {},
+  title: {
+    fontSize: 25,
+  },
 });

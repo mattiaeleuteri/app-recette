@@ -34,16 +34,17 @@ export default function Recette(props) {
       />
       <FlatList
         data={result.extendedIngredients}
-        renderItem={(item) => (
-          <View style={styles.ingredientContainer}>
-            <Image
-              style={styles.ingredientImage}
-              source={{ uri: item.image }}
-            />
-            <Text style={styles.ingredientName}>{item.name}</Text>
+        renderItem={({ item }) => (
+          <View>
+            <Text style={styles.ingredientName}>
+              {item.amount + " "}
+              {item.measures.metric.unitShort + " "}
+              {item.name}
+            </Text>
           </View>
         )}
         keyExtractor={(item) => item.id.toString()}
+        style={styles.ingredientContainer}
       />
       <Text style={styles.summary}>{result.summary}</Text>
     </SafeAreaView>
@@ -67,7 +68,11 @@ const styles = StyleSheet.create({
     padding: 10,
     textAlign: "justify",
   },
-  ingredientContainer: {},
+  ingredientContainer: {
+    marginTop: 10,
+    paddingHorizontal: 10,
+    paddingBottom: 40,
+  },
   ingredientImage: {
     width: 50,
     height: 50,
